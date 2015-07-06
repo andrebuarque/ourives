@@ -1,0 +1,183 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <div class="page-header">
+            <h1>Clientes</h1>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+
+<div id="message"></div>
+
+<!-- end: PAGE HEADER -->
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default" id="tabs">
+            <div class="panel-heading">
+                <div class="panel-tools">
+				    <a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
+				    <a class="btn btn-xs btn-link panel-expand" href="#">
+						<i class="icon-resize-full"></i>
+					</a>
+				    <a class="btn btn-xs btn-link panel-close" href="#">
+				    	<i class="icon-remove"></i>
+				    </a>
+				</div>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable panel-tabs">
+                    <ul class="nav nav-tabs pull-left">
+                        <li class="active">
+                            <a data-toggle="tab" href="#listagem">Listagem</a>
+                        </li>
+                        <?$style = ($cadastro == false) ? 'style="display: none"' : '';?>
+                        <li class="">
+                            <a data-toggle="tab" <?=$style?> href="#cadastro">Cadastro</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="listagem" class="tab-pane active">
+                            <table class="table table-bordered table-striped table-hover" id="tabela-listagem"></table>
+                        </div>
+                        <div id="cadastro" class="tab-pane">
+                            <form class="form-horizontal" id="form-cadastro">
+                            	<input type="hidden" id="id" name="id" class="form-control">
+                            	<div class="form-group"></div>
+                            	<fieldset>
+                            		<legend>Informações Pessoais</legend>
+                            		<div class="form-group">
+								        <label class="col-sm-2 control-label required" for="nome">Nome</label>
+								        <div class="col-sm-6">
+								            <input required type="text" placeholder="Nome" id="nome" name="nome" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label required" for="cpf">CPF</label>
+								        <div class="col-sm-6">
+								            <input required type="text" placeholder="CPF" id="cpf" name="cpf" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="email">E-mail</label>
+								        <div class="col-sm-6">
+								            <input type="text" placeholder="E-mail" id="email" name="email" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="telcelular">Tel. Celular</label>
+								        <div class="col-sm-3">
+								            <input type="text" placeholder="Tel. Celular" id="telcelular" name="telcelular" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="telresidencial">Tel. Residencial</label>
+								        <div class="col-sm-3">
+								            <input type="text" placeholder="Tel. Residencial" id="telresidencial" name="telresidencial" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="telcomercial">Tel. Comercial</label>
+								        <div class="col-sm-3">
+								            <input type="text" placeholder="Tel. Comercial" id="telcomercial" name="telcomercial" class="form-control">
+								        </div>
+								    </div>
+                            	</fieldset>
+							    <fieldset>
+							    	<legend>Endereço</legend>
+							    	<div class="form-group">
+								        <label class="col-sm-2 control-label" for="cep">CEP</label>
+								        <div class="col-sm-2">
+								            <input type="text" placeholder="CEP" id="cep" name="cep" class="form-control">
+								        </div>
+								        <div class="col-sm-3" style="line-height:2.3">
+								        	<a class="btn btn-primary btn-xs" id="buscarEndereco" href="javascript:void();"><i class="clip-search-2"></i> buscar endereço</a>
+								        	<img src="img/ajax-loader.gif" id="loader" style="display:none">
+								        </div>
+								    </div>
+							    	<div class="form-group">
+								        <label class="col-sm-2 control-label" for="logradouro">Logradouro</label>
+								        <div class="col-sm-6">
+								            <input type="text" placeholder="Logradouro" id="logradouro" name="logradouro" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="numero">Número</label>
+								        <div class="col-sm-2">
+								            <input type="text" placeholder="Número" id="numero" name="numero" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="complemento">Complemento</label>
+								        <div class="col-sm-6">
+								            <input type="text" placeholder="Complemento" id="complemento" name="complemento" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="bairro">Bairro</label>
+								        <div class="col-sm-4">
+								            <input type="text" placeholder="Bairro" id="bairro" name="bairro" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="cidade">Cidade</label>
+								        <div class="col-sm-4">
+								            <input type="text" placeholder="Cidade" id="cidade" name="cidade" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="estado">Estado</label>
+								        <div class="col-sm-4">
+								            <input type="text" placeholder="Estado" id="estado" name="estado" class="form-control">
+								        </div>
+								    </div>
+							    </fieldset>
+							    <div class="form-group">
+							    	<label class="col-sm-2 control-label" for="form-field-1"></label>
+							        <div class="col-sm-7">
+							            <button type="submit" id="btnSalvar" class="btn btn-primary">
+											Salvar
+										</button>
+										<button type="button" id="btnCancelar" class="btn btn-light-grey">
+											Cancelar
+										</button>
+							        </div>
+							    </div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalExcluir" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="icon-exclamation-sign"></i> Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 16px">
+                    Deseja realmente excluir o registro?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" id="confirmaExclusao" class="btn btn-primary">
+                	Sim
+                </button>
+                <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky">
+                	Não
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="js/modulos/cliente.index.js"></script>
+<!-- end: PAGE CONTENT -->

@@ -1,0 +1,210 @@
+[2014-02-25 21:45:35] ERROR - Não foi possível incluir o perfil - A new entity was found through the relationship 'modelo\entidades\Perfil#permissoes' that was not configured to cascade persist operations for entity: modelo\entidades\Permissao@000000004f7ed1de000000007346d994. To solve this issue: Either explicitly call EntityManager#persist() on this unknown entity or configure cascade persist  this association in the mapping for example @ManyToOne(..,cascade={"persist"}). If you cannot find out which entity causes the problem implement 'modelo\entidades\Permissao#__toString()' to get a clue. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/ORM/ORMInvalidArgumentException.php - Linha: 59 ]
+
+[2014-02-26 22:57:24] ERROR - Não foi possível buscar o usuário - An exception occurred while executing 'SELECT t0.id AS id1, t0.nome AS nome2, t0.email AS email3, t0.senha AS senha4, t0.ativo AS ativo5, t0.idperfil AS idperfil6 FROM usuario t0 WHERE t0.id = ? LIMIT 1' with params {"1":"j_jaferson@msn.com"}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for integer: "j_jaferson@msn.com" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-02-26 22:58:08] ERROR - Não foi possível buscar o usuário - An exception occurred while executing 'SELECT t0.id AS id1, t0.nome AS nome2, t0.email AS email3, t0.senha AS senha4, t0.ativo AS ativo5, t0.idperfil AS idperfil6 FROM usuario t0 WHERE t0.id = ? LIMIT 1' with params {"1":"j_jaferson@msn.com"}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for integer: "j_jaferson@msn.com" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-02-26 23:02:13] ERROR - Não foi possível incluir o usuário - An exception occurred while executing 'INSERT INTO usuario (id, nome, email, senha, ativo, idperfil) VALUES (?, ?, ?, ?, ?, ?)' with params {"1":4,"2":"Taffarel S","3":"j_jaferson@msn.com","4":null,"5":"false","6":20}:
+
+SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "senha" violates not-null constraint
+DETAIL:  Failing row contains (4, 20, Taffarel S, j_jaferson@msn.com, null, f). [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-03-08 18:23:04] ERROR - Não foi possível atualizar o usuário - An exception occurred while executing 'UPDATE usuario SET senha = ?, ativo = ? WHERE id = ?' with params {"1":null,"2":"true","3":6}:
+
+SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "senha" violates not-null constraint
+DETAIL:  Failing row contains (6, 20, José Jaferson Monteiro Galdino da Silva, andre.buarque90@gmail.com, null, t). [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-03-08 18:48:09] ERROR - Não foi possível excluir o usuário - A detached entity was found during removed modelo\entidades\Usuario@00000000127fd1df00000000338e05af
+
+[2014-03-10 21:25:30] ERROR - Não foi possível buscar o usuário - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-03-10 21:46:21] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-03-10 22:11:11] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-03-11 22:51:42] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-03-16 16:16:17] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-03-16 17:43:01] ERROR - Não foi possível excluir o perfil - An exception occurred while executing 'DELETE FROM perfil WHERE id = ?' with params {"1":21}:
+
+SQLSTATE[23503]: Foreign key violation: 7 ERROR:  update or delete on table "perfil" violates foreign key constraint "USUARIO_idperfil_fkey" on table "usuario"
+DETAIL:  Key (id)=(21) is still referenced from table "usuario".
+
+[2014-03-16 19:37:18] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 19:37:21] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 19:37:22] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 19:37:23] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 19:37:33] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 20:43:57] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 20:44:02] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "sistemao"
+
+[2014-03-16 21:56:09] ERROR - Não foi possível excluir a permissão. - An exception occurred while executing 'SELECT MENU_TYPE.id, 
+					       MENU_TYPE.titulo,
+					       MENU_TYPE.idmenu AS idmenupai,
+					       PERMISSAO.visualizar,
+					       PERMISSAO.gravar,
+					       PERMISSAO.remover
+					FROM   PERMISSAO 
+					       INNER JOIN MENU_TYPE 
+					               ON MENU_TYPE.id = PERMISSAO.idmenu 
+					WHERE  PERMISSAO.idperfil = ?
+						   AND MENU_TYPE.status = TRUE 
+					ORDER BY MENU_TYPE.idmenu DESC' with params {"1":21}:
+
+SQLSTATE[42703]: Undefined column: 7 ERROR:  column menu_type.status does not exist
+LINE 11:          AND MENU_TYPE.status = TRUE 
+                      ^ [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-03-16 21:56:09] ERROR - Não foi possível excluir a permissão. - An exception occurred while executing 'SELECT MENU_TYPE.id, 
+					       MENU_TYPE.titulo,
+					       MENU_TYPE.idmenu AS idmenupai,
+					       PERMISSAO.visualizar,
+					       PERMISSAO.gravar,
+					       PERMISSAO.remover
+					FROM   PERMISSAO 
+					       INNER JOIN MENU_TYPE 
+					               ON MENU_TYPE.id = PERMISSAO.idmenu 
+					WHERE  PERMISSAO.idperfil = ?
+						   AND MENU_TYPE.status = TRUE 
+					ORDER BY MENU_TYPE.idmenu DESC' with params {"1":21}:
+
+SQLSTATE[42703]: Undefined column: 7 ERROR:  column menu_type.status does not exist
+LINE 11:          AND MENU_TYPE.status = TRUE 
+                      ^ [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-03 22:45:37] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-07-09 22:50:04] ERROR - Não foi possível excluir o produto - A detached entity was found during removed modelo\entidades\Produto@000000001c2deb4a000000006d794d7a
+
+[2014-07-09 22:52:00] ERROR - Não foi possível incluir o produto - An exception occurred while executing 'INSERT INTO produto (id, nome, valor, descricao) VALUES (?, ?, ?, ?)' with params {"1":3,"2":"Produto ABC","3":"222,00","4":"sada d asd asdasd"}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "222,00" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-09 22:54:29] ERROR - Não foi possível incluir o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-09 22:55:13] ERROR - Não foi possível incluir o produto - An exception occurred while executing 'INSERT INTO produto (id, nome, valor, descricao) VALUES (?, ?, ?, ?)' with params {"1":4,"2":"Produto ABC","3":"222,00","4":"sada d asd asdasd"}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "222,00" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-09 22:57:21] ERROR - Não foi possível incluir o produto - [Type Error] Attribute "scale" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-09 22:58:53] ERROR - Não foi possível incluir o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:19:05] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:19:12] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:21:08] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:21:54] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:22:01] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:26:42] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:27:11] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:30:21] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:30:24] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:31:40] ERROR - Não foi possível atualizar o produto - [Type Error] Attribute "precision" of @Column declared on property modelo\entidades\Produto::$valor expects a(n) integer, but got string. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Annotations/AnnotationException.php - Linha: 97 ]
+
+[2014-07-10 21:32:32] ERROR - Não foi possível atualizar o produto - An exception occurred while executing 'UPDATE produto SET valor = ? WHERE id = ?' with params {"1":"2,00","2":5}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "2,00" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-17 01:08:25] ERROR - Não foi possível excluir o perfil - An exception occurred while executing 'DELETE FROM perfil WHERE id = ?' with params {"1":21}:
+
+SQLSTATE[23503]: Foreign key violation: 7 ERROR:  update or delete on table "perfil" violates foreign key constraint "USUARIO_idperfil_fkey" on table "usuario"
+DETAIL:  Key (id)=(21) is still referenced from table "usuario".
+
+[2014-07-17 01:09:28] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-07-17 01:11:04] ERROR - Não foi possível listar as ordens de serviço - Could not convert database value "01:11:04-03" to Doctrine Type datetime. Expected format: Y-m-d H:i:s [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/Types/ConversionException.php - Linha: 60 ]
+
+[2014-07-17 01:11:10] ERROR - Não foi possível listar as ordens de serviço - Could not convert database value "01:11:04-03" to Doctrine Type datetime. Expected format: Y-m-d H:i:s [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/Types/ConversionException.php - Linha: 60 ]
+
+[2014-07-17 01:15:23] ERROR - Não foi possível listar as ordens de serviço - Could not convert database value "01:11:04-03" to Doctrine Type datetime. Expected format: Y-m-d H:i:s [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/Types/ConversionException.php - Linha: 60 ]
+
+[2014-07-17 01:15:35] ERROR - Não foi possível listar as ordens de serviço - Could not convert database value "01:11:04-03" to Doctrine Type datetime. Expected format: Y-m-d H:i:s [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/Types/ConversionException.php - Linha: 60 ]
+
+[2014-07-17 01:16:16] ERROR - Não foi possível listar as ordens de serviço - Could not convert database value "01:11:04-03" to Doctrine Type datetime. Expected format: Y-m-d H:i:s [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/Types/ConversionException.php - Linha: 60 ]
+
+[2014-07-17 01:26:26] ERROR - Não foi possível atualizar a ordem de serviço - An exception occurred while executing 'UPDATE ordem_servico SET descricao = ?, observacao = ?, valor = ?, valorpago = ?, datasolicitacao = ?, dataprevistaentrega = ? WHERE id = ?' with params {"1":"","2":"","3":"22222","4":"2222","5":"2014-07-17","6":"2014-07-17","7":1}:
+
+SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-29 19:30:24] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-07-30 19:58:29] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-07-30 21:21:57] ERROR - Não foi possível buscar a categoria - An exception occurred while executing 'SELECT t0.id AS id1, t0.titulo AS titulo2, t0.ativo AS ativo3 FROM categoria_ordem_servico t0 WHERE t0.id = ?' with params {"1":""}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for integer: "" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-07-30 21:29:38] ERROR - Não foi possível buscar a categoria - An exception occurred while executing 'SELECT t0.id AS id1, t0.titulo AS titulo2, t0.ativo AS ativo3 FROM categoria_ordem_servico t0 WHERE t0.id = ?' with params {"1":""}:
+
+SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for integer: "" [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-08-06 21:16:40] ERROR - Não foi possível incluir a ordem de serviço - An exception occurred while executing 'INSERT INTO ordem_servico (id, descricao, observacao, valor, valorpago, dataentrega, datasolicitacao, dataprevistaentrega, entregarpara, servico, estado, idproduto, idcliente, idcategoria, idourives) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' with params {"1":2,"2":"adadasd asd asd asd asd","3":"","4":2222.22,"5":22.22,"6":null,"7":"2014-08-06","8":"2014-08-06","9":"","10":"Teste asdas das a","11":"ABERTO","12":null,"13":2,"14":1,"15":10}:
+
+SQLSTATE[22003]: Numeric value out of range: 7 ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3. [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-08-07 22:46:54] FATAL - SQLSTATE[08006] [7] FATAL:  password authentication failed for user "josej"
+
+[2014-08-07 23:11:22] ERROR - Não foi possível listar as ordens de serviço - An exception occurred while executing 'SELECT t0.id AS id1, t0.descricao AS descricao2, t0.observacao AS observacao3, t0.valor AS valor4, t0.valorpago AS valorpago5, t0.dataentrega AS dataentrega6, t0.datasolicitacao AS datasolicitacao7, t0.dataprevistaentrega AS dataprevistaentrega8, t0.entregarpara AS entregarpara9, t0.servico AS servico10, t0.estado AS estado11, t0.dataalteracao AS dataalteracao12, t0.idproduto AS idproduto13, t14.id AS id15, t14.nome AS nome16, t14.valor AS valor17, t14.descricao AS descricao18, t0.idcliente AS idcliente19, t20.id AS id21, t20.nome AS nome22, t20.cpf AS cpf23, t20.email AS email24, t20.telcelular AS telcelular25, t20.telresidencial AS telresidencial26, t20.telcomercial AS telcomercial27, t20.idendereco AS idendereco28, t0.idcategoria AS idcategoria29, t30.id AS id31, t30.titulo AS titulo32, t30.ativo AS ativo33, t0.idourives AS idourives34, t35.id AS id36, t35.nome AS nome37, t35.email AS email38, t35.senha AS senha39, t35.ativo AS ativo40, t35.idperfil AS idperfil41, t0.idusuario_solicitacao AS idusuario_solicitacao42, t43.id AS id44, t43.nome AS nome45, t43.email AS email46, t43.senha AS senha47, t43.ativo AS ativo48, t43.idperfil AS idperfil49, t0.idusuario_alteracao AS idusuario_alteracao50, t51.id AS id52, t51.nome AS nome53, t51.email AS email54, t51.senha AS senha55, t51.ativo AS ativo56, t51.idperfil AS idperfil57, t0.idusuariofinalizacao AS idusuariofinalizacao58, t59.id AS id60, t59.nome AS nome61, t59.email AS email62, t59.senha AS senha63, t59.ativo AS ativo64, t59.idperfil AS idperfil65 FROM ordem_servico t0 LEFT JOIN produto t14 ON t0.idproduto = t14.id LEFT JOIN cliente t20 ON t0.idcliente = t20.id LEFT JOIN categoria_ordem_servico t30 ON t0.idcategoria = t30.id LEFT JOIN usuario t35 ON t0.idourives = t35.id LEFT JOIN usuario t43 ON t0.idusuario_solicitacao = t43.id LEFT JOIN usuario t51 ON t0.idusuario_alteracao = t51.id LEFT JOIN usuario t59 ON t0.idusuariofinalizacao = t59.id':
+
+SQLSTATE[42703]: Undefined column: 7 ERROR:  column t0.idusuario_solicitacao does not exist
+LINE 1: ...ON t0.idourives = t35.id LEFT JOIN usuario t43 ON t0.idusuar...
+                                                             ^ [Arquivo: /Library/WebServer/Documents/ourives/lib/Doctrine/DBAL/DBALException.php - Linha: 47 ]
+
+[2014-08-11 20:48:28] FATAL - could not find driver
+
+[2014-08-11 20:57:20] FATAL - could not find driver
+
+[2014-08-11 21:05:50] FATAL - could not find driver
+
+[2014-08-11 21:06:21] FATAL - could not find driver
+
+[2014-08-11 21:13:33] FATAL - could not find driver
+
+[2014-08-13 21:30:42] FATAL - could not find driver
+
+[2014-08-13 21:35:08] FATAL - could not find driver
+
+[2014-08-13 21:38:32] FATAL - could not find driver
+
+[2014-08-13 21:40:18] FATAL - could not find driver
+
+[2014-08-13 21:42:56] FATAL - could not find driver
+
+[2014-08-13 21:54:06] FATAL - could not find driver
+
+[2014-08-13 21:55:04] FATAL - could not find driver
+
+[2014-08-13 21:55:16] FATAL - could not find driver
+
+[2014-08-13 21:57:38] FATAL - could not find driver
+
+[2014-08-14 22:26:25] FATAL - could not find driver
+
+[2014-08-17 12:17:37] FATAL - could not find driver
+
+[2014-08-17 22:34:23] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+
+[2014-08-20 21:27:13] ERROR - E-mail e/ou senha inválidos. - Registo não encontrado [Arquivo: /Library/WebServer/Documents/ourives/modelo/dao/GenericDAO.php - Linha: 87 ]
+

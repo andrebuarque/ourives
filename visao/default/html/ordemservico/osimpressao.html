@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" media="screen">
+<style>
+	tr { height: 30px }
+	img { margin: 0 5px 5px 0; }
+</style>
+<div class="body row">
+	<h2 style="margin: 0px;text-align: center;background-color: #000;color:white;height:60px;line-height: 60px">
+		Ordem de Serviço - Ourives
+	</h2>
+	
+	<br/>
+	
+	<table>
+		<tr>
+			<td><b>Número da OS:</b> <?=$ordemServico->id?></td>
+			<td width="100px" style="text-align: right;"><b>R$:</b> <?=$ordemServico->valor?></td>
+		</tr>
+		<tr>
+			<td><b>Gerada Por:</b> <?=$ordemServico->usuarioSolicitacao->nome?></td>
+		</tr>
+		<tr>
+			<td><b><?=(empty($ordemServico->servico)) ? "Produto" : "Serviço"?>:</b> <?=(empty($ordemServico->servico)) ? $ordemServico->produto->nome : $ordemServico->servico?></td>
+		</tr>
+		<tr>
+			<td><b>Categoria:</b> <?=$ordemServico->categoria->titulo?></td>
+		</tr>
+		<tr>
+			<td><b>Cliente:</b> <?=$ordemServico->cliente->nome?></td>
+		</tr>
+		<tr>
+			<td><b>E-mail:</b> <?=$ordemServico->cliente->email?></td>
+		</tr>
+		<?if (!empty($ordemServico->cliente->telResidencial)){?>
+		<tr>
+			<td><b>Telefone Residencial:</b> <?=$ordemServico->cliente->telResidencial?></td>
+		</tr>
+		<?}?>
+		<tr>
+			<td><b>Endereço:</b> <?=$ordemServico->cliente->endereco?></td>
+		</tr>
+		<tr>
+			<td>
+				<b>Data de Entrega:</b> <?=$ordemServico->dataPrevistaEntrega->format('d/m/Y')?>
+				<span style="margin-left:20px"><b>Entregar para:</b> <?=$ordemServico->entregarPara?></span>
+			</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<table style="width:100%;">
+		<tr>
+			<td style="text-align:center;">_____________________________<br>
+				Atendente
+			</td>
+			<td style="text-align:center;">_____________________________<br>
+				Cliente
+			</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<h4 style="margin: 0px;text-align: center;background: #000;color:white;height:50px;line-height: 20px">
+		E-mail: ourivesriomar@gmail.com<br>
+		Telefones: 96397371 - 85323281 - 33271540
+	</h4>
+</div>
+<br>
+<div class="body row" style="border-bottom:dashed 1px #000;margin: 10px 0px">
+</div>
+<br>
+<div class="body row">
+	<h2 style="margin: 0px;text-align: center;background-color: #000;color:white;height:60px;line-height: 60px">
+		Ordem de Serviço - Ourives
+	</h2>
+	
+	<br/>
+	
+	<table>
+		<tr>
+			<td><b>Número da OS:</b> <?=$ordemServico->id?></td>
+			<td width="100px" style="text-align: right;"><b>R$:</b> <?=$ordemServico->valor?></td>
+		</tr>
+		<tr>
+			<td><b>Gerada Por:</b> <?=$ordemServico->usuarioSolicitacao->nome?></td>
+		</tr>
+		<tr>
+			<td><b><?=(empty($ordemServico->servico)) ? "Produto" : "Serviço"?>:</b> <?=(empty($ordemServico->servico)) ? $ordemServico->produto->nome : $ordemServico->servico?></td>
+		</tr>
+		<tr>
+			<td><b>Categoria:</b> <?=$ordemServico->categoria->titulo?></td>
+		</tr>
+		<tr>
+			<td><b>Cliente:</b> <?=$ordemServico->cliente->nome?></td>
+		</tr>
+		<tr>
+			<td><b>E-mail:</b> <?=$ordemServico->cliente->email?></td>
+		</tr>
+		<?if (!empty($ordemServico->cliente->telResidencial)){?>
+		<tr>
+			<td><b>Telefone Residencial:</b> <?=$ordemServico->cliente->telResidencial?></td>
+		</tr>
+		<?}?>
+		<tr>
+			<td><b>Endereço:</b> <?=$ordemServico->cliente->endereco?></td>
+		</tr>
+		<tr>
+			<td>
+				<b>Data de Entrega:</b> <?=$ordemServico->dataPrevistaEntrega->format('d/m/Y')?>
+				<span style="margin-left:20px"><b>Entregar para:</b> <?=$ordemServico->entregarPara?></span>
+			</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<table style="width:100%;">
+		<tr>
+			<td style="text-align:center;">_____________________________<br>
+				Atendente
+			</td>
+			<td style="text-align:center;">_____________________________<br>
+				Cliente
+			</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<h4 style="margin: 0px;text-align: center;background-color: #000;color:white;height:50px;line-height: 20px">
+		E-mail: ourivesriomar@gmail.com<br>
+		Telefones: 96397371 - 85323281 - 33271540
+	</h4>
+</div>

@@ -1,0 +1,156 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <div class="page-header">
+            <h1>Perfil</h1>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+
+<div id="message"></div>
+
+<!-- end: PAGE HEADER -->
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default" id="tabs">
+            <div class="panel-heading">
+                <div class="panel-tools">
+				    <a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
+				    <a class="btn btn-xs btn-link panel-expand" href="#">
+						<i class="icon-resize-full"></i>
+					</a>
+				    <a class="btn btn-xs btn-link panel-close" href="#">
+				    	<i class="icon-remove"></i>
+				    </a>
+				</div>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable panel-tabs">
+                    <ul class="nav nav-tabs pull-left">
+                        <li class="active">
+                            <a data-toggle="tab" href="#listagem">Listagem</a>
+                        </li>
+                        <?$style = ($cadastro == false) ? 'style="display: none"' : '';?>
+                        <li class="">
+                            <a data-toggle="tab" <?=$style?> href="#cadastro">Cadastro</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="listagem" class="tab-pane active">
+                            <table class="table table-bordered table-striped table-hover" id="tabela-listagem"></table>
+                        </div>
+                        <div id="cadastro" class="tab-pane">
+                            <form class="form-horizontal" id="form-cadastro">
+                            	<input type="hidden" id="id" name="id" class="form-control">
+                            	<div class="form-group"></div>
+                            	<div class="form-group">
+							        <label class="col-sm-2 control-label" for="ativo">Ativo</label>
+							        <div class="col-sm-6">
+							        	<div class="checkbox-table">
+											<label class="">
+												<input type="checkbox" name="ativo" id="ativo" class="flat-black checkbox">
+											</label>
+										</div>
+							        </div>
+							    </div>
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label required" for="form-field-1">Título</label>
+							        <div class="col-sm-6">
+							            <input required type="text" placeholder="Título" id="titulo" name="titulo" class="form-control">
+							        </div>
+							    </div>
+							    <div class="form-group">
+							    	<div class="col-sm-2"></div>
+							    	<div class="col-sm-6">
+								    	<table class="table table-condensed table-hover" id="tabela_permissao">
+											<thead>
+												<tr>
+													<th class="center"></th>
+													<th class="center">Visualizar</th>
+													<th class="center">Cadastrar/Editar</th>
+													<th class="center">Excluir</th>
+												</tr>
+											</thead>
+											<tbody>
+											<? foreach($menus as $itemMenu) { ?>
+												<tr id="registro_padrao">
+													<td class="titulo_menu">
+														<?=!empty($itemMenu->menuPai) ? '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;': ''?>
+														<?=$itemMenu->titulo?>
+													</td>
+													<td class="center">
+														<div class="checkbox-table">
+															<label class="">
+																<input type="checkbox" name="visualizar[<?=$itemMenu->id?>]" id="<?=$itemMenu->id?>" data-idmenupai="<?=!empty($itemMenu->menuPai) ? $itemMenu->menuPai->id : ''?>" class="flat-black checkbox visualizar">
+															</label>
+														</div>
+													</td>
+													<td class="center">
+														<div class="checkbox-table">
+															<label class="">
+																<input type="checkbox" name="gravar[<?=$itemMenu->id?>]" id="<?=$itemMenu->id?>" data-idmenupai="<?=!empty($itemMenu->menuPai) ? $itemMenu->menuPai->id : ''?>" class="flat-black checkbox gravar">
+															</label>
+														</div>
+													</td>
+													<td class="center">
+														<div class="checkbox-table">
+															<label class="">
+																<input type="checkbox" name="excluir[<?=$itemMenu->id?>]" id="<?=$itemMenu->id?>" data-idmenupai="<?=!empty($itemMenu->menuPai) ? $itemMenu->menuPai->id : ''?>" class="flat-black checkbox excluir">
+															</label>
+														</div>
+													</td>
+												</tr>
+												<? } ?>
+											</tbody>
+										</table>
+									</div>
+							    </div>
+							    <div class="form-group">
+							    	<label class="col-sm-2 control-label" for="form-field-1"></label>
+							        <div class="col-sm-7">
+							            <button type="submit" id="btnSalvar" class="btn btn-primary">
+											Salvar
+										</button>
+										<button type="button" id="btnCancelar" class="btn btn-light-grey">
+											Cancelar
+										</button>
+							        </div>
+							    </div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalExcluir" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="icon-exclamation-sign"></i> Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 16px">
+                    Deseja realmente excluir o registro?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" id="confirmaExclusao" class="btn btn-primary">
+                	Sim
+                </button>
+                <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky">
+                	Não
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/modulos/perfil.index.js"></script>
+<!-- end: PAGE CONTENT -->

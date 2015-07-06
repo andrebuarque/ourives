@@ -1,0 +1,228 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+	<div class="col-sm-12">
+		<!-- start: PAGE TITLE & BREADCRUMB -->
+		<div class="page-header">
+			<h1>Dashboard</h1>
+		</div>
+		<!-- end: PAGE TITLE & BREADCRUMB -->
+	</div>
+</div>
+<!-- end: PAGE HEADER -->
+					
+<!-- start: PAGE CONTENT -->
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="clip-libreoffice"></i>
+				Ordens de Serviços
+				<div class="panel-tools">
+					<a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+					</a>
+					<a class="btn btn-xs btn-link panel-expand" href="#">
+						<i class="icon-resize-full"></i>
+					</a>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped table-hover" id="tabela-listagem"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal" id="modalDetalharOS" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="clip-zoom-in"></i> Descrição da OS</h4>
+            </div>
+            <div class="modal-body">
+				<dl class="dl-horizontal">
+					<dt>
+						Número da OS
+					</dt>
+					<dd>
+						<span id="numeroOS"></span>
+					</dd>
+					<dt>
+						Gerada Por
+					</dt>
+					<dd>
+						<span id="geradapor"></span>
+					</dd>
+					<dt>
+						Categoria
+					</dt>
+					<dd>
+						<span id="categoria"></span>
+					</dd>
+					<dt>
+						Cliente
+					</dt>
+					<dd>
+						<span id="nomeCliente"></span>
+					</dd>
+					<dt>
+						Data Solicitação
+					</dt>
+					<dd>
+						<span id="dataSolicitacao"></span>
+					</dd>
+					<dt>
+						Data Prevista Entrega
+					</dt>
+					<dd>
+						<span id="dataPrevistaEntrega"></span>
+					</dd>
+					<dt>
+						Entregar para
+					</dt>
+					<dd>
+						<span id="entregarPara"></span>
+					</dd>
+					<dt>
+						Data Entrega
+					</dt>
+					<dd>
+						<span id="dataEntrega"></span>
+					</dd>
+					<dt>
+						Ourives
+					</dt>
+					<dd>
+						<span id="ourives"></span>
+					</dd>
+					<dt>
+						Valor
+					</dt>
+					<dd>
+						<span id="valor"></span>
+					</dd>
+					<dt>
+						Valor Pago
+					</dt>
+					<dd>
+						<span id="valorPago"></span>
+					</dd>
+					<dt>
+						Debito
+					</dt>
+					<dd>
+						<span id="debito"></span>
+					</dd>
+					<dt>
+						Tipo
+					</dt>
+					<dd>
+						<span id="servico"></span>
+					</dd>
+					<dt>
+						Observação
+					</dt>
+					<dd>
+						<span id="observacao"></span>
+					</dd>
+					<dt>
+						Situação
+					</dt>
+					<dd>
+						<span id="situacao"></span>
+					</dd>
+				</dl>				
+            </div>
+            <div class="modal-footer">
+                <button data-complete-text="Imprimir" data-aria-hidden="true" class="btn btn-bricky" id="imprimirOS">
+                	Imprimir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: PAGE CONTENT -->
+<script type="text/javascript">
+	$("document").ready(function(){
+		$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+		var controlador = BASE + '/Home/';
+		$("#modalDetalharOS").modal('hide');
+		
+		var tabelaListagem = $('#tabela-listagem').dataTable({
+			"bLengthChange": false,
+			"bInfo": false,
+			'aoColumns': [
+			     {sTitle: 'ID', bVisible: false},
+			     {sTitle: 'Cliente', sWidth: '200px'},
+			     {sTitle: 'O.S', sWidth: '100px'},
+			     {sTitle: 'Título'},
+			     {sTitle: 'Entrega',  sWidth: '100px'},
+			     {sTitle: 'Ourives',  sWidth: '150px'},
+			     {sTitle: 'Valor',  sWidth: '100px'},
+			     {sTitle: 'Situação',  sWidth: '100px'}
+			],
+			"sAjaxSource": controlador + "listarRelatorioOS",
+			"fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+				$(nRow).attr({'data-id': aData[0]}).addClass('modalOS');
+			},
+	        "aaSorting": [
+	            [0, 'desc']
+	        ],
+		});
+		
+		$('tr.modalOS').live('click', function(){
+			var id = $(this).attr('data-id');
+			$.post(controlador + 'buscarOS', {idos: id},
+					function(data){
+
+						if (data.status = true){
+							$("#nomeCliente").html(data.os.cliente);
+							$("#numeroOS").html(data.os.numero);
+							$("#categoria").html(data.os.categoria);
+							$("#dataSolicitacao").html(data.os.datasolicitacao);
+							$("#entregarPara").html(data.os.entregarpara);
+							$("#dataEntrega").html(data.os.dataentrega);
+							$("#dataPrevistaEntrega").html(data.os.dataprevistaentrega);
+							$("#ourives").html(data.os.ourives);
+							$("#valor").html(data.os.valor);
+							$("#valorPago").html(data.os.valorPago);
+							$("#debito").html(data.os.valorDebito);
+							$("#situacao").html(data.os.situacao);
+							$("#servico").html(data.os.servico);
+							$("#observacao").html(data.os.observacao);
+							$("#geradapor").html(data.os.usuariosolicitacao);
+							$("#imprimirOS").attr("data-id", data.os.numero);
+							$("#modalDetalharOS").modal('show');
+						} else {
+							alert(data.mensagem);
+						}
+				
+					}, 'json');
+		});
+		
+		$("#imprimirOS").click(function(){
+			$(this).button('loading');
+			var id = $(this).attr('data-id');
+			var form = $("<form></form>").attr({
+				action: controlador + 'gerarOSParaImpressao',
+				method: 'POST'
+			}).append('<input type="hidden" name="idos" value="'+id+'" />');
+			
+			$('body').append(form);
+			$(form).submit();
+			$(this).button('complete');
+		});
+	});
+	
+	function sleep(milliseconds) {
+	  	var start = new Date().getTime();
+	  	for (var i = 0; i < 1e7; i++) {
+	    	if ((new Date().getTime() - start) > milliseconds){
+	      		break;
+	    	}
+	  	}
+	}
+</script>

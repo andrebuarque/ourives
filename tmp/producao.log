@@ -1,0 +1,13 @@
+[16-Mar-2014 22:37:18 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroPerfil.php on line 205
+[16-Mar-2014 22:37:21 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroUsuario.php on line 192
+[16-Mar-2014 22:37:22 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroPerfil.php on line 205
+[16-Mar-2014 22:37:23 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroUsuario.php on line 192
+[16-Mar-2014 22:37:33 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroUsuario.php on line 192
+[16-Mar-2014 23:34:34 UTC] PHP Fatal error:  Call to undefined function Doctrine\Common\Cache\apc_fetch() in /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Cache/ApcCache.php on line 42
+[16-Mar-2014 23:34:43 UTC] PHP Fatal error:  Call to undefined function Doctrine\Common\Cache\apc_fetch() in /Library/WebServer/Documents/ourives/lib/Doctrine/Common/Cache/ApcCache.php on line 42
+[16-Mar-2014 23:43:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Library/WebServer/Documents/ourives/controlador/Facil.php:169) in /Library/WebServer/Documents/ourives/controlador/Login.php on line 64
+[16-Mar-2014 23:43:58 UTC] PHP Fatal error:  Call to a member function autenticar() on a non-object in /Library/WebServer/Documents/ourives/controlador/Login.php on line 69
+[16-Mar-2014 23:44:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Library/WebServer/Documents/ourives/controlador/Facil.php:169) in /Library/WebServer/Documents/ourives/controlador/Login.php on line 64
+[16-Mar-2014 23:44:02 UTC] PHP Fatal error:  Call to a member function autenticar() on a non-object in /Library/WebServer/Documents/ourives/controlador/Login.php on line 69
+[08-Aug-2014 01:46:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Library/WebServer/Documents/ourives/controlador/CadastroOrdemServico.php:54) in /Library/WebServer/Documents/ourives/controlador/Facil.php on line 217
+[08-Aug-2014 01:46:54 UTC] PHP Fatal error:  Call to a member function getPermissoesPerfil() on a non-object in /Library/WebServer/Documents/ourives/controlador/CadastroOrdemServico.php on line 428

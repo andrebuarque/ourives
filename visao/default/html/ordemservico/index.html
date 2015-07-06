@@ -1,0 +1,378 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <div class="page-header">
+            <h1>Ordens de Serviço</h1>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+
+<div id="message"></div>
+
+<!-- end: PAGE HEADER -->
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default" id="tabs">
+            <div class="panel-heading">
+                <div class="panel-tools">
+				    <a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
+				    <a class="btn btn-xs btn-link panel-expand" href="#">
+						<i class="icon-resize-full"></i>
+					</a>
+				    <a class="btn btn-xs btn-link panel-close" href="#">
+				    	<i class="icon-remove"></i>
+				    </a>
+				</div>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable panel-tabs">
+                    <ul class="nav nav-tabs pull-left">
+                        <li class="active">
+                            <a data-toggle="tab" href="#listagem">Listagem</a>
+                        </li>
+                        <?$style = ($cadastro == false) ? 'style="display: none"' : '';?>
+                        <li class="">
+                            <a data-toggle="tab" <?=$style?> href="#cadastro">Cadastro</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="listagem" class="tab-pane active">
+                            <table class="table table-bordered table-striped table-hover" id="tabela-listagem"></table>
+                        </div>
+                        <div id="cadastro" class="tab-pane">
+                            <form class="form-horizontal" id="form-cadastro">
+                            	<input type="hidden" id="id" name="id" class="form-control">
+                            	
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label"></label>
+							        <div class="col-sm-6">
+										<label class="radio-inline">
+											<input type="radio" name="tipoOS" id="tipoOSServico" value="SERVICO" checked/>
+											Serviço
+										</label>
+						        		<label class="radio-inline">
+											<input type="radio" name="tipoOS" id="tipoOSProduto" value="PRODUTO" />
+											Produto
+										</label>
+							        </div>
+							    </div>
+                            	
+							    <div class="form-group" id="divTitulo">
+							        <label class="col-sm-2 control-label" for="titulo">
+							        	Descrição do Serviço:
+							        	<span class="symbol required"></span> 
+							        </label>
+							        <div class="col-sm-8">
+							            <textarea class="autosize form-control" id="titulo" name="titulo" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 69px;"></textarea>
+							        </div>
+							    </div>
+							    <div class="form-group" id="divProduto" style="display:none">
+							        <label class="col-sm-2 control-label" for="produto">
+							        	Produto:
+							        	<span class="symbol required"></span>  
+							        </label>
+							       	<div class="col-sm-4">
+							            <select name="produto" id="produto" data-msg-required="Favor selecionar o produto">
+							            	<option value="">Escolha...</option>
+							            	<?foreach($produtos as $produto){?>
+							            		<option value="<?=$produto->id?>"><?=$produto->nome?></option>
+							            	<?}?>
+							            </select>
+							       	</div>
+							    </div>
+<!-- 							    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="descricao">Descrição: </label>
+							        <div class="col-sm-8">
+										<textarea class="autosize form-control" id="descricao" name="descricao" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 69px;"></textarea>
+							        </div>
+							    </div>
+                            	 -->
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="categoria">
+							        	Categoria:
+							        	<span class="symbol required"></span> 
+							        </label>
+							       	<div class="col-sm-4">
+							            <select name="categoria" id="categoria" required data-msg-required="Favor selecionar a categoria da OS">
+							            	<option value="">Escolha...</option>
+							            	<?foreach($categorias as $categoria){?>
+							            		<option value="<?=$categoria->id?>"><?=$categoria->titulo?></option>
+							            	<?}?>
+							            </select>
+							       	</div>
+							    </div>
+							    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="ourives">
+							        	Ourives:
+							        	<span class="symbol required"></span>
+							        </label>
+							        <div class="col-sm-4">
+							            <select name="ourives" id="ourives" required data-msg-required="Favor selecionar o Ourives">
+							            	<option value="">Escolha...</option>
+							            	<?foreach($ourives as $responsavel){?>
+							            		<option value="<?=$responsavel->id?>"><?=$responsavel->nome?></option>
+							            	<?}?>
+							            </select>
+							        </div>
+							    </div>
+							    
+                           		<div class="form-group">
+							        <label class="col-sm-2 control-label" for="nome">
+							        	Cliente:
+							        	<span class="symbol required"></span> 
+							        </label>
+							        <div class="col-sm-4">
+							            <select name="cliente" id="cliente" required data-msg-required="Favor selecionar o Cliente">
+							            	<option value="">Escolha...</option>
+							            	<?foreach($clientes as $cliente){?>
+							            		<option value="<?=$cliente->id?>"><?=$cliente->nome?></option>
+							            	<?}?>
+							            </select>
+							        </div>
+							        <span class="help-inline col-sm-2" style="margin-top: 14px;margin-left: -16px;"> 
+							        	<i class="clip-search"></i> 
+							        	<a class="btn-link" id="btProcurarCliente" >Procurar Clientes</a> 
+							        </span>
+							    </div>
+							    	    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="valor">
+							        	Valor do Serviço (R$):
+							        	<span class="symbol required"></span> 
+							        </label>
+							        <div class="col-sm-2">
+							            <input type="text" id="valor" name="valor" class="form-control" required data-msg-required="Favor informar o valor do serviço">
+							        </div>
+							        <label class="col-sm-2 control-label" for="valor">
+							        	Valor Pago (R$):
+							        	<span class="symbol required"></span> 
+							        </label>
+							        <div class="col-sm-2">
+							            <input type="text" id="valorpago" name="valorpago" class="form-control" required data-msg-required="Favor informar o valor pago">
+							        </div>
+							    </div>
+							    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="dataprevistaentrega">
+							        	Data Prevista de Entrega:
+							        	<span class="symbol required"></span> 
+							        </label>
+							        <div class="col-sm-3 input-group">
+							            <input type="text" placeholder="Data de Entrega" 
+							            	id="dataprevistaentrega" name="dataprevistaentrega" class="form-control date-picker"
+							            	data-date-format="dd/mm/yyyy"
+							            	data-date-viewmode="years"
+							            	data-date-autoclose="true"
+							            	readonly="readonly"
+							            	required data-msg-required="Favor selecionar a data de entrega">
+							            <span class="input-group-addon" id="calendar"> <i class="icon-calendar"></i> </span>
+							        </div>
+									<br><br><label for="dataprevistaentrega" class="error"></label>
+							    </div>
+							    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="entregarpara">Entregar Para: </label>
+							        <div class="col-sm-8">
+							            <input type="text" id="entregarpara" name="entregarpara" class="form-control">
+							        </div>
+							    </div>
+							    
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="descricao">Observações: </label>
+							        <div class="col-sm-8">
+										<textarea class="autosize form-control" id="observacao" name="observacao" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 69px;"></textarea>
+							        </div>
+							    </div>
+							    
+							    <div class="form-group">
+							    	<div class="col-sm-8">
+							    		<span class="symbol required"></span> Campos Obrigatórios
+							    	</div>
+							    </div>
+							    
+							    <div id="divimagem" style="display:none;">
+								    <fieldset>
+								    	<legend>Imagens</legend>
+							            <div id="fotosVisualizar"></div>
+								    </fieldset>
+							    </div>
+							    
+						    	 <div class="col-lg-3 col-md-4 col-xs-6 thumb modalVisualizar" id="modeloImagem" style="display:none;position:relative">
+					                <a class="thumbnail" href="javascrip:void(0);">
+					                    <img class="img-responsive" src="http://placehold.it/400x300" alt="" />
+					                </a>
+					                <span class="remover"><i class="clip-remove"></i></span>
+					            </div>
+							    
+							    <div class="form-group">
+							    	<label class="col-sm-2 control-label" for="form-field-1"></label>
+							        <div class="col-sm-7">
+							            <button type="submit" id="btnSalvar" class="btn btn-primary">
+											Salvar
+										</button>
+										<button type="button" id="btnCancelar" class="btn btn-light-grey">
+											Cancelar
+										</button>
+							        </div>
+							    </div>
+							    
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalExcluir" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="icon-exclamation-sign"></i> Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 16px">
+                    Deseja realmente excluir o registro?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" id="confirmaExclusao" class="btn btn-primary">
+                	Sim
+                </button>
+                <button aria-hidden="true" data-dismiss="modal" class="btn btn-bricky">
+                	Não
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalCamera" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="icon-camera"></i> Câmera</h4>
+            </div>
+            <div class="modal-body">
+            	<input type="hidden" id="idOSFoto" />
+                <p style="font-size: 16px;float:left; width: 300px">
+                    <video id="video" autoplay="true" style="display:block;margin:0 auto; width: 100%"></video>
+		            <canvas style="display:none;"></canvas>
+		            <span style="text-align: center;width: 300px;">
+	                	<button type="button" id="btnFoto" class="btn btn-primary btn-lg" style="display:block;margin:0 auto;z-index:1000;margin-top:10px;">
+							<i class="icon-camera"></i> Tirar Fotos
+							<span class="badge badge-primary" id="totalFotos"></span>
+						</button>
+	                </span>
+                </p>
+                <center id="fotos" style="float:right;width: 600px">
+                </center>
+                <div style="clear:both"></div>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" id="fecharModalCamera" class="btn btn-primary">
+                	Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalVisualizarFotos" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 660px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="icon-camera"></i> Visualizar Fotos</h4>
+            </div>
+            <div class="modal-body">
+            	<p>
+                	<center class="divFotos" style="float:right;width: 600px"></center>
+                </p>
+                <div style="clear:both"></div>
+            </div>
+            <div class="modal-footer">
+                <button aria-hidden="true" data-dismiss="modal" id="fecharModalCamera" class="btn btn-primary">
+                	Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalValidarPagamento" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 460px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="clip-info-2"></i> Validar Pagamento</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="form-group">
+					<label class="col-sm-3 control-label" for="valorFinalizacaoOS">Valor Pago (R$)</label>
+					<div class="col-sm-7">
+						<input type="text" placeholder="Valor Pago (R$)" id="valorFinalizacaoOS" name="valorFinalizacaoOS" class="form-control">
+					</div>
+				</div>
+            </div>
+            <div class="modal-footer">
+               <button aria-hidden="true" data-dismiss="modal" id="btnFinalizarOS" class="btn btn-primary">
+                	Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modalProcurarCliente" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="clip-users"></i> Clientes</h4>
+            </div>
+            <div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped table-hover" id="tabela-listagem-clientes" style="width: 640px"></table>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalVisualizarImagem" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+                </button>
+                <h4 class="modal-title"><i class="clip-users"></i> Visualizar Imagem</h4>
+            </div>
+            <div class="modal-body">
+				<a target="_blank" href="#"> <img class="img-responsive" src="http://placehold.it/400x300" alt="" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="plugins/jquery-maskMoney/jquery.maskMoney.min.js"></script>
+<script type="text/javascript" src="plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="js/libs/Camera.js"></script>
+<script type="text/javascript" src="js/modulos/ordemservico.index.js"></script>
+<!-- end: PAGE CONTENT -->

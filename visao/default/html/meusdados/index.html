@@ -1,0 +1,97 @@
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <div class="page-header">
+            <h1>Meus dados cadastrais</h1>
+        </div>
+        <!-- end: PAGE TITLE & BREADCRUMB -->
+    </div>
+</div>
+
+<div id="message"></div>
+
+<!-- end: PAGE HEADER -->
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default" id="tabs">
+            <div class="panel-heading">
+                <div class="panel-tools">
+				    <a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
+				    <a class="btn btn-xs btn-link panel-expand" href="#">
+						<i class="icon-resize-full"></i>
+					</a>
+				    <a class="btn btn-xs btn-link panel-close" href="#">
+				    	<i class="icon-remove"></i>
+				    </a>
+				</div>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable panel-tabs">
+                    <ul class="nav nav-tabs pull-left">
+                        <li class="">
+                            <a data-toggle="tab" href="#cadastro">
+                            Meus dados
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="cadastro" class="tab-pane active">
+                            <form class="form-horizontal" id="form-cadastro">
+                            	<div class="form-group"></div>
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="nome"> Nome </label>
+							        <div class="col-sm-4">
+							            <input type="text" value="<?=$usuarioLogado->nome?>" id="nome" name="nome" class="form-control">
+							        </div>
+							    </div>
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="email">E-mail</label>
+							        <div class="col-sm-4">
+							            <input type="text" id="email" value="<?=$usuarioLogado->email?>" name="email" class="form-control">
+							        </div>
+							    </div>
+							    <div class="form-group">
+							        <label class="col-sm-2 control-label" for="email">&nbsp;</label>
+							        <div class="col-sm-4">
+							            <a href="javascript:void();" id="alterarSenha">Alterar senha</a>
+							        </div>
+							    </div>
+							    <div id="divAlterarSenha" style="display:none">
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="senhaAtual">Senha atual</label>
+								        <div class="col-sm-4">
+								            <input type="password" placeholder="Senha atual" id="senhaAtual" name="senhaAtual" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="novaSenha">Nova senha</label>
+								        <div class="col-sm-4">
+								            <input type="password" placeholder="Nova senha" id="novaSenha" name="novaSenha" class="form-control">
+								        </div>
+								    </div>
+								    <div class="form-group">
+								        <label class="col-sm-2 control-label" for="confirmarNovaSenha">Confirmar nova senha</label>
+								        <div class="col-sm-4">
+								            <input type="password" placeholder="Confirmar nova senha" id="confirmarNovaSenha" name="confirmarNovaSenha" class="form-control">
+								        </div>
+								    </div>
+							    </div>
+							    <div class="form-group">
+							    	<label class="col-sm-2 control-label" for="form-field-1"></label>
+							        <div class="col-sm-1">
+							            <button type="submit" id="btnSalvar" class="btn btn-primary">
+											Salvar
+										</button>
+							        </div>
+							    </div>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/modulos/meusdados.index.js"></script>

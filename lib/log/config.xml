@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <!-- INFO -->
+    <appender name="default" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutPattern">
+        	<param name="conversionPattern" value="[%date{Y-m-d H:i:s}] %-5level - %msg%newline" />
+        </layout>
+        <param name="file" value="tmp/logs/system.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="debug" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutPattern">
+        	<param name="conversionPattern" value="[%date{Y-m-d H:i:s}] %-5level - %msg%newline" />
+        </layout>
+        <param name="file" value="tmp/logs/debug.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="fatal" class="LoggerAppenderMail">
+        <layout class="LoggerLayoutPattern">
+        	<param name="conversionPattern" value="[%date{Y-m-d H:i:s}] %-5level - %msg%newline" />
+        </layout>
+        <param name="to" value="andre.bc90@gmail.com" />
+        <param name="from" value="logs@pesquisadeclima.com.br" />
+        <param name="subject" value="ERRO FATAL - Pesquisa de Clima" />
+    </appender>
+    
+    <logger name="debug">
+    	<level value="debug" />
+        <appender_ref ref="debug" />
+    </logger>
+    
+    <logger name="fatal">
+    	<level value="fatal" />
+        <appender_ref ref="fatal" />
+    </logger>
+    
+    <logger name="default">
+        <appender_ref ref="default" />
+    </logger>
+</configuration>

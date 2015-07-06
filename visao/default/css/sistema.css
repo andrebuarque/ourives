@@ -1,0 +1,13 @@
+.modalOS{
+	cursor:pointer;
+}
+
+.modalVisualizar .remover{
+	display: none;
+	bottom: 5px;
+	position: absolute;
+	left: 23px;
+	color: #fff;
+	font-size: 28px;
+	cursor: pointer;
+}
